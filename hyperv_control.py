@@ -91,6 +91,11 @@ def main(vm_name: str) -> None:
                 case "quit":
                     return
 
+                case "help":
+                    print(f"Valid commands:")
+                    for i in ["quit", "help", "switch"] + list(commands.keys()):
+                        print(f" - {i}")
+
                 case "switch":
                     vm_name = input("new vm name: ")
                     continue
@@ -98,6 +103,7 @@ def main(vm_name: str) -> None:
                 case _:
                     if not command in commands.keys():
                         print(f"Invalid command: \"{command}\"")
+                        print("Type \"help\" to see all commands")
                         continue
                     commands[command](vm_name)
 
